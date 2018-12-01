@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Todos los archivos HTML 5 empiezan con la línea de arriba. -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Saludo Web 2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header>
+      <h1>Saludo Web 2.0</h1>
+      <nav>
+        <a href="index.php">Web 1</a>
+        <a href="web2.html">Web 2</a>
+        <a href="iot.html">Internet of Things</a>
+      </nav>
+    </header>
+    <!-- Forma de procesamiento.
+ 
+    name="vista"
+    nombre de esta forma dentro del documento. Solo hay que usar
+    document.vista desde EcmaScript. -->
+    <form name="vista">
+      <p>
+        <input type="text" name="nombre1" placeholder="Nombre 1"
+               accesskey="1">
+      </p>
+      <p>
+        <input type="text" name="nombre2" placeholder="Nombre 2"
+               accesskey="2">
+      </p>
+      <p>
+        <output name="respuesta"></output>
+      </p>
+      <p>
+        <button id="saluda" type="submit">Saludar</button>
+      </p>
+    </form>
+    <!-- Incorpora el script controlador a la página. -->
+    <script>
+      /* Muestra aviso o error al usar las características no
+       * recomendadas de JavaScript */
+      "use strict";
+      /* Se obtiene una referencia a la form cuyo name es vista. Como es
+       * const, no cambia su valor posteriormente. */
+      const vista = document.vista;
+      let respuesta;
+      /* Todos los element de HTML reciben eventos, tales como un clic,
+       * la presión de una tecla, el movimiento del ratón sobre ellos,
+       * etc. Los event listener son funciones que se invocan cuando
+       * alguno de ellos sucede. El método addEventListener de un element,
+       * asocia un evento, como "click" (hacer clic en un element) o
+       * "input" (presionar una tecla) con una función event listener.
+       * En este caso, se declara que la funcion "saluda" se invoque
+       * cuando se genere el evento "submit" en la form con name="vista".
+       * El evento submit es la activación de la forma y se genera cuando
+       * se cliquea o se presiona la tecla de espacio sobre un element de
+       * type="submit" dentro de la forma, o cuando se teclea enter con el
+       * foco dentro de un componente de captura de texto dentro de la
+       * forma. */
+      document.vista.addEventListener("submit", saluda);
+      /** Saluda cuando se activa la forma.
+       * @param {Event} evt Descripción del evento que activa la forma. */
+      function saluda(evt) {
+        /* El evento "submit" carga este mismo archivo desde internet (como
+         * en el ejemplo de PHP). En este ejemplo lo que se desea es
+         * procesar sin recargar. Para evitar el comportamiento
+         * predeterminado, se usa el método "preventDefault".  */
+        evt.preventDefault();
+        try {
+          const nombre1 = vista.nombre1.value.trim();
+          const nombre2 = vista.nombre2.value.trim();
+          // Valida los datos.
+          if (!nombre1) {
+            /* Cuando nombre1 es null, undefined, 0 o "", su
+             * valor booleano es falso y por lo mismo !nombre1 es
+             * true y entra a esta parte del código. Al lanzarse el error,
+             * el código se aborta y pasa directamente a la cláusula
+             * catch. */
+            throw new Error("Falta el nombre 1");
+          } else if (!nombre2) {
+            throw new Error("Falta el nombre 2");
+          }
+          /* Se evalúan las expresiones modelo.nombre1 y  modelo.nombre2,
+           * para posteriormente sustituirlos en los puntos indicados de
+           * la cadena.
+           * El resultado se asigna a la variable "respuesta".
+           * EL TEXTO DE LA CADENA EMPIEZA Y TERMINA CON EL ACENTO
+           * INVERTIDO. */
+          respuesta = `Saludos a ${nombre1} y a ${nombre2}.`;
+        } catch (e) {
+          /* Llega aquí cuando alguna instrucción de la cláusula try
+           * falla.
+           * La expresión e.message recupera el valor que se pasa al
+           * constructor del objeto tipo Error. */
+          respuesta = e.message;
+        }
+        /* Se asigna valor a la propiedad value del componente cuyo name es
+         * respuesta. Como resultado, se muestra el texto. */
+        vista.respuesta.value = respuesta;
+      }
+    </script>
+  </body>
+</html>
