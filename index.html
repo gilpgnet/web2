@@ -1,5 +1,40 @@
 <!DOCTYPE html>
-<!-- Todos los archivos HTML 5 empiezan con la línea de arriba. -->
+<!-- Todos los archivos HTML 5 empiezan con la línea de arriba.
+
+  Esta estructura es un comentario y normalmente explica una sección de
+  código.
+
+  Las páginas HTML están formadas por estructuras como las siguientes:
+
+  * Element con contenido: usan una etiqueta inicial, una etiqueta final y
+   un contenido. Tienen una estructura como la siguiente:
+  <element atributo1="valor1" atributo2="valor2">
+    contenido
+  </element>
+
+  * Element sin contenido: solo usan una etiqueta inicial y tienen una
+   estructura como la siguiente:
+  <element atributo1="valor1" atributo2="valor2">
+
+  * Texto
+
+  * Comentarios como este
+
+  element se refiere al tipo de información que representa la estructura,
+  como pueden ser entre otros:
+    * html: para la estructura completa de una página
+    * h1: el título de una página
+    * p: un párrafo de texto
+  
+  Los atributos son características de un element a las que se les asocia
+  un valor. Los atributos son opcionales y no hay límite al número de
+  ellos que puede contener la etiqueta inicial, aunque en los ejemplos
+  anteriores solo se hayan puesto2.
+
+  Algunos atributos son boolean y solo se pone el nombre, sin su valor,
+  lo cual significa que esa característica si aplica para el element.
+
+  El contenido de un element son otros element, texto y comentarios. -->
 <html>
   <head>
     <!-- Se indica que la codificación es UTF-8. Ver http://unicode.org/
@@ -23,12 +58,20 @@
     <!-- Hoja de estilo, que permite cambiar la apariencia de la página.
     -->
     <style>
-      /* body {font-famly: sans-serif}
-       * body es un "selector" que indica a que element de HTML se aplican
-       * las definiciones entre { y }, que en este caso es a casi a todo
-       * el contenido del element body.
+      /* Una hoja de estilos define reglas. Cada regla tiene una
+       * estructura como esta:
+       *    selector {atributo1: valor1; atributo2: valor2; ...}
+       * la sección entre { y } se conoce como bloque de declaraciones.
        *
-       * font-famly: sans-serif
+       * Los atributos y sus valores definen la apariencia de los element
+       * que coinciden con los selectores.
+       *
+       * body {font-famly: sans-serif}
+       * El tipo de selector más simple es el nombre de un element. La
+       * regla se aplica a todas las veces que aparezca ese element en la
+       * página. En este caso se selecciona el element body.
+       *
+       * font-family: sans-serif
        * Se un font predefinido por el navegador web que tenga la
        * característica sans-serifa (sin serifas o remates).
        * Las serifas o remates son pequeños adornos que se ponen en los
@@ -37,7 +80,10 @@
        * Garamond y Courier. Se aplican principalmente a textos largos y
        * párrafos.
        * Ejemplos de fonts sin serifa son: Arial y Helvética. Se aplican
-       * principalmente en textos cortos e interfaces de usuario. */
+       * principalmente en textos cortos e interfaces de usuario.
+       * El atributo font-family se hereda a casi tode el contenido del
+       * element indicado por el selector. En este caso es a casi toda la
+       * página. */
        body {font-family: sans-serif}
     </style>
   </head>
