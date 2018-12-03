@@ -3,6 +3,8 @@ Ejemplo pequeño de procesamiento estilo web2
 
 El código es procesado en el navegador.
 
+Puedes verlo funcionando en https://iniciogil.000webhostapp.com/.
+
 ## Depuración
 - Hay que trabajar en el **modo incógnito** del navegador porque los
   archivos pueden quedar el cache del navegador y no registrar los cambios
